@@ -1,29 +1,80 @@
-import AboutImg from '../assets/rb_899.png'
+import * as React from 'react';
+import AboutImg from '../assets/rb_899.png';
+import { Box, Typography, Avatar } from '@mui/material';
 
-export default function About () {
-const config = {
-    line1:'Hi, My name is Pirasanthan. i am a full stack wep developer. i built beutiful wepsites with react.js and tailwind css+Bootstrap ',
-    line2:'i am proficient in frontend skill like react.js, redux tool ,css,html,php and many more.',
-    line3:'in ui/ux i know figma.'
-}
+export default function About() {
+  const aboutText = `
+    I'm Yogaeswaran Pirasanthan, a Full Stack Web Developer and UI/UX Designer passionate about creating stunning, user-friendly websites. 
+    I specialize in React.js, Tailwind CSS, and Bootstrap, with expertise in frontend technologies like Redux, HTML, CSS, and PHP. 
+    Proficient in Figma, I bring ideas to life visually and functionally. Explore my portfolio to see my work—let's build something amazing together!
+  `;
 
+  return (
+    <section id="about">
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: { xs: 3, md: 6 },
+          backgroundColor: 'slategray',
+        }}
+      >
+        {/* Image Section */}
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: { xs: 3, md: 0 },
+            width: '100%',
+            maxWidth: 350,
+          }}
+        >
+          <Avatar
+            alt="About Me"
+            src={AboutImg}
+            sx={{
+              width: { xs: 150, md: 200 },
+              height: { xs: 150, md: 200 },
+              boxShadow: 3,
+              border: '3px solid white',
+              '&:hover': {
+                transform: 'scale(1.05)',
+                transition: 'transform 0.3s ease',
+              },
+            }}
+          />
+        </Box>
 
-    return <section className='flex flex-col md:flex-row bg-slate-500 px-5  ' id='about'>
-        <div className='py-5 md:w-1/2 bg-transparent'>
-            <img src={AboutImg}/>
-        </div>
-        <div className='md:w-1/2 flex justify-center'>
-        <div className='   text-white flex flex-col justify-center pl-5 pr-5'>
-        <h1 className='text-4xl border-b-4 border-[#2b2d77] mb-2 w-[170px] font-bold'>About Me</h1>
-        <p className='pb-5'>{config.line1} </p>
-        <p className='pb-5'>
-            {config.line2}
-        </p>
-        <p className='pb-5'>
-           {config.line3}
-        </p>
-        </div>
-            
-        </div>
+        {/* Text Section */}
+        <Box
+          sx={{
+            width: '100%',
+            maxWidth: 500,
+            textAlign: { xs: 'center', md: 'left' },
+            paddingLeft: { md: 4 },
+          }}
+        >
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: 'bold',
+              color: '#2b2d77',
+              marginBottom: 2,
+              borderBottom: '4px solid #2b2d77',
+              width: 'fit-content',
+              marginX: 'auto',
+              paddingBottom: 1,
+            }}
+          >
+            About Me
+          </Typography>
+          <Typography variant="body1" sx={{ marginBottom: 2, color: 'white', lineHeight: 1.6 }}>
+            {aboutText}
+          </Typography>
+        </Box>
+      </Box>
     </section>
+  );
 }
